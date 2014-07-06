@@ -257,6 +257,12 @@ module RSpec
                 o.kw_args_method(1, required_arg: 1)
               end
 
+              it 'allows anything matcher to be used in place of the keywords arg hash' do
+                o = instance_double('LoadedClass')
+                expect(o).to receive(:kw_args_method).with(1, anything)
+                o.kw_args_method(1, required_arg: 1)
+              end
+
               it 'still checks positional arguments when matchers used for keyword args' do
                 o = instance_double('LoadedClass')
                 prevents(/Expected 1, got 3/) {
