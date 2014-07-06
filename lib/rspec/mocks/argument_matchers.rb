@@ -1,3 +1,5 @@
+require 'rspec/support/matcher_definition'
+
 module RSpec
   module Mocks
 
@@ -254,6 +256,13 @@ module RSpec
         end
       end
 
+      ::RSpec::Support.register_matcher_definition do |object|
+        # This is the best we have for now. We should tag all of our matchers
+        # with a module or something so we can test for it directly.
+        #
+        # (Note Module#parent in ActiveSupport is defined in a similar way.)
+        object.class.name.include?('RSpec::Mocks::ArgumentMatchers::')
+      end
     end
   end
 end
