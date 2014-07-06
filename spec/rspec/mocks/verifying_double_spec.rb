@@ -40,7 +40,7 @@ class LoadedClass
       def kw_args_method(foo, optional_arg:'hello', required_arg:)
       end
 
-      def mixed_args_method(foo, bar, optional_arg_1:1, optional_arg_2: 2)
+      def mixed_args_method(foo, bar, optional_arg_1:1, optional_arg_2:2)
       end
     RUBY
   end
