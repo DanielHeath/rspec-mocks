@@ -175,6 +175,16 @@ module RSpec
         def description(name)
           "#{name}(#{@expected.inspect.sub(/^\{/,"").sub(/\}$/,"")})"
         end
+
+        # TODO: What should implementation be?
+        # https://github.com/rspec/rspec-mocks/issues/513
+        def matches?(_)
+        end
+
+        # TODO: What should implementation be?
+        # https://github.com/rspec/rspec-mocks/issues/513
+        def failure_message
+        end
       end
 
       # @private
