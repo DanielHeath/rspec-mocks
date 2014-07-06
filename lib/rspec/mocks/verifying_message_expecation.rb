@@ -46,7 +46,12 @@ module RSpec
         return if method_reference.nil?
 
         method_reference.with_signature do |signature|
-          verifier = Support::MethodSignatureVerifier.new(signature, actual_args)
+          verifier = Support::MethodSignatureVerifier.new(
+            signature,
+            actual_args,
+            :allow_matchers => true
+          )
+
           unless verifier.valid?
             # Fail fast is required, otherwise the message expecation will fail
             # as well ("expected method not called") and clobber this one.

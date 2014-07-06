@@ -274,11 +274,10 @@ module RSpec
               it 'does not allow matchers to be used in an actual method call' do
                 o = instance_double('LoadedClass')
                 matcher = hash_including(:required_arg => 1)
-                expect(o).to receive(:kw_args_method).
-                  with(1, matcher)
-                prevents {
+                allow(o).to receive(:kw_args_method).with(1, matcher)
+                expect {
                   o.kw_args_method(1, matcher)
-                }
+                }.to raise_error(ArgumentError)
               end
             end
 
